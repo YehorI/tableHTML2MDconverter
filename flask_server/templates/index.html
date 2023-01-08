@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form action="" method="post">
+        {{ form.csrf_token() }}
+        {% for field in form if field.name not in ("csrf_token", "submit") %}
+            <div>{{ field.label }}</div>
+            <div>{{ field }}</div>
+            {% for error in field.errors %}
+                {{ error }}
+            {% endfor %}
+        {% endfor %}
+            <div>{{ form.submit }}</div>
+    </form>
+    <pre>
+        {% for markdown_table in markdown_tables %}
+{{ markdown_table }}
+        {% endfor %}
+    </pre>
+{% endblock %}

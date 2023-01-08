@@ -1,0 +1,15 @@
+|ID|UniversityName                         |Students|Faculties|Professores|Location        |Site    |
+|--|---------------------------------------|--------|---------|-----------|----------------|--------|
+|1 |Perm State National Research University|12400   |12       |1229       |Perm            |psu.ru  |
+|2 |Saint Petersburg State University      |21300   |24       |13126      |Saint-Petersburg| spbu.ru|
+|3 |Novosibirsk State University           |7200    |13       |1527       |Novosibirsk     |nsu.ru  |
+|4 |Moscow State University                |35100   |39       |14358      |Moscow          |msu.ru  |
+|5 |Higher School of Economics             |20335   |12       |1615       |Moscow          |hse.ru  |
+|6 |Ural Federal University                |57000   |19       |5640       |Yekaterinburg   |urfu.ru |
+|7 |National Research Nuclear University   |8600    |10       |936        |Moscow          |mephi.ru|
+
+|ID|UniversityName                         |Students|Faculties|Professores|Location   |Site  |
+|--|---------------------------------------|--------|---------|-----------|-----------|------|
+|1 |Perm State National Research University|12400   |12       |1229       |Perm       |psu.ru|
+|3 |Novosibirsk State University           |7200    |13       |1527       |Novosibirsk|nsu.ru|
+
