@@ -3,7 +3,6 @@ from flask import Flask, render_template
 from forms import GetHTML
 import html2md_table.html2md_table as html2md_table
 
-from bs4 import BeautifulSoup, ResultSet, element
 
 app = Flask(__name__)
 app.secret_key = 'my_key'
