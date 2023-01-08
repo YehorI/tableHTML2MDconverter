@@ -2,10 +2,11 @@ import requests
 from flask import Flask, render_template, redirect, url_for
 from forms import GetHTML
 import html2md_table
+from config import SECRET_KEY
 
 
 app = Flask(__name__)
-app.secret_key = 'my_key'
+app.secret_key = SECRET_KEY
 
 
 @app.route('/', methods=['GET', 'POST'])
