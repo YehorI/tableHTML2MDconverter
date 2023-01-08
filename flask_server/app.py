@@ -1,5 +1,5 @@
 import requests
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 from forms import GetHTML
 import html2md_table
 
@@ -28,7 +28,12 @@ def index():
                 markdown_tables.append(markdown_table)
         return render_template('index.html', form=form, markdown_tables=markdown_tables)
     else:
-        return render_template('index.html', form=form)
+        return redirect(url_for('home'))
+
+@app.route('/home')
+def home():
+    form = GetHTML()
+    render_template('index.html', form = form)
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8000, debug=True)
