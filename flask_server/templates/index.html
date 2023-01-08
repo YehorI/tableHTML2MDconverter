@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         {{ form.csrf_token() }}
         {% for field in form if field.name not in ("csrf_token", "submit") %}
             <div>{{ field.label }}</div>
