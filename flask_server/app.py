@@ -1,7 +1,7 @@
 import requests
 from flask import Flask, render_template
 from forms import GetHTML
-import html2md_table.html2md_table as html2md_table
+import html2md_table
 
 
 app = Flask(__name__)
