@@ -1,6 +1,6 @@
 import os
 import requests
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, request
 from forms import GetHTML
 from werkzeug.utils import secure_filename
 import html2md_table
@@ -9,13 +9,16 @@ from config import SECRET_KEY
 
 app = Flask(__name__)
 app.secret_key = SECRET_KEY
+app.config['UPLOAD_FOLDER'] = os.path.join(app.instance_path, 'uploaded files')
+app.config['MAX_CONTENT_PATH'] = 50_000 # in bytes
 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = GetHTML()
-    if form.validate_on_submit():
-        markdown_tables = []
+    markdown_tables = []
+
+    if request.method == 'POST' and form.validate_on_submit():
 
         # LINK
         if form.input_type.data == 0:
@@ -27,7 +30,7 @@ def index():
 
         # HTML
         if form.input_type.data == 1:
-            page = form.html_file.data
+            page = request.files['html_file']
             # filename = secure_filename(page.filename)
             # page.save(os.path.join(app.instance_path, 'uploaded files', filename))
             tables = html2md_table.tables_from_html(page)
@@ -43,12 +46,8 @@ def index():
                 markdown_tables.append(markdown_table)
         return render_template('index.html', form=form, markdown_tables=markdown_tables)
     else:
-        return redirect(url_for('home'))
+        return render_template('index.html', form=form, markdown_tables=markdown_tables)
 
-@app.route('/home')
-def home():
-    form = GetHTML()
-    render_template('index.html', form = form)
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8000, debug=True)

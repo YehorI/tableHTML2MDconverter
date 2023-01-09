@@ -15,7 +15,7 @@ class GetHTML(FlaskForm):
     )
     html_file = FileField(
         'Прикрепите файл',
-        validators=[FileAllowed('html', 'txt')]
+        validators=[FileAllowed(['html', 'txt'])]
         )
     text_window = TextAreaField('Текст', render_kw={'cols':'100', 'rows':'20'})
     submit = SubmitField('Отправить')
